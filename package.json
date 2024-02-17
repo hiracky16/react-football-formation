@@ -1,0 +1,45 @@
+{
+  "name": "react-football-formation",
+  "version": "1.0.0",
+  "description": "react foobtall formation components.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiracky16/react-football-formation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hiracky16/react-football-formation/issues"
+  },
+  "keywords": [
+    "football",
+    "soccer",
+    "formation",
+    "lineup"
+  ],
+  "author": "hiracky16",
+  "license": "ISC",
+  "dependencies": {
+    "@types/css-modules": "^1.0.5",
+    "react": "^18.2.0",
+    "storybook": "^7.6.7",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.7",
+    "@storybook/addon-interactions": "^7.6.7",
+    "@storybook/addon-links": "^7.6.7",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.7",
+    "@storybook/react": "^7.6.7",
+    "@storybook/react-vite": "^7.6.7",
+    "@storybook/test": "^7.6.7",
+    "@types/react": "^18.2.47",
+    "react-dom": "^18.2.0",
+    "typed-scss-modules": "^8.0.0"
+  }
+}
