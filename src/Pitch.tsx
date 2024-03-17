@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
-import styles from './Pitch.module.css';
+import style from './Pitch.module.css';
 
 const MAX_WIDTH = 120
 const MAX_HEIGHT = 90
@@ -17,7 +17,7 @@ export type Player = {
     id: number
     name: string
     number: number
-    pos: 'GK' | 'DF' | 'MF' | 'FW'
+    pos: "GK" | "DF" | "MF" | "FW"
     x: number
     y: number
     color: PlayerColor
@@ -29,7 +29,7 @@ export type PlayerColor = {
     number: string
 }
 
-export type NewPitchProps = {
+export type PitchProps = {
     home: Team
     away: Team
 }
@@ -71,7 +71,9 @@ const PlayerIcon = (props: PlayerIconProps) => {
                 className="playerIcon"
             />
             <text x={props.x} y={props.y} text-anchor="middle" fontSize={2} dy=".3em" color={`#${props.color.number}`}>{props.number}</text>
-            <text x={props.x} y={props.y + 3} text-anchor="middle" fontSize={1.5} color={`#${props.color.number}`}>{props.name}</text>
+            {/* name
+                <text x={props.x} y={props.y + 3} text-anchor="middle" fontSize={1.5} color={`#${props.color.number}`}>{props.name}</text>
+            */}
             <circle
                 id={props.id}
                 cx={props.x}
@@ -85,7 +87,7 @@ const PlayerIcon = (props: PlayerIconProps) => {
     );
 };
 
-const Picth = (props: NewPitchProps) => {
+const Picth = (props: PitchProps) => {
     const [homePitchPlayers, setHomePitchPlayers] = useState<PitchPlayer[]>([])
     const [awayPitchPlayers, setAwayPitchPlayers] = useState<PitchPlayer[]>([])
     const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null);
@@ -157,7 +159,7 @@ const Picth = (props: NewPitchProps) => {
 
     return (
         <svg
-            className={styles.soccerField}
+            className={style.soccerField}
             ref={svgRef}
             viewBox="0 0 120 90"
             xmlns="http://www.w3.org/2000/svg"
