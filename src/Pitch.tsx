@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
-import style from './Pitch.module.css';
+import styled from 'styled-components';
 
 const MAX_WIDTH = 120
 const MAX_HEIGHT = 90
@@ -61,6 +61,7 @@ const PlayerIcon = (props: PlayerIconProps) => {
     return (
         <>
             <circle
+                data-testid={props.id}
                 id={props.id}
                 cx={props.x}
                 cy={props.y}
@@ -86,6 +87,28 @@ const PlayerIcon = (props: PlayerIconProps) => {
         </>
     );
 };
+
+const FiledSvg = styled.svg`
+    width: 100%;
+    height: auto;
+    max-width: 100vw;
+    max-height: 100vh;
+
+    @media (max-width: 768px) {
+        /* スマホサイズでの表示を考慮して回転 */
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+        /* 回転した後のサイズ調整が必要です */
+        width: 100vh;
+        height: 100vw;
+        /* ビューポートからはみ出さないように位置調整が必要です */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* translateを-50%ずつ適用して、中心を基点に配置します */
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+`
 
 const Picth = (props: PitchProps) => {
     const [homePitchPlayers, setHomePitchPlayers] = useState<PitchPlayer[]>([])
@@ -128,14 +151,14 @@ const Picth = (props: PitchProps) => {
         formation: number[],
         player: Player,
         isHome: boolean,
+        teamName: string,
     ) => {
-        console.log(formation)
         const samePositionPlayerNumber = player.pos == 'GK' ? 1 : formation[player.x - 2]
         const dividePitchNumber = samePositionPlayerNumber + 1
         const x = ((MAX_WIDTH / 2 - (MARGIN * 2)) / (formation.length + 1)) * (player.x)
         const y = MAX_HEIGHT / dividePitchNumber * player.y
         return {
-            id: `${player.id}`,
+            id: `${teamName}_${player.id}`,
             number: player.number,
             name: player.name,
             x: isHome ? x : MAX_WIDTH - x,
@@ -146,10 +169,10 @@ const Picth = (props: PitchProps) => {
 
     useEffect(() => {
         const transformedHomePlayer = props.home.startingPlayers?.map(
-            h => tranformPlayerPosition(props.home.formation, h, true)
+            h => tranformPlayerPosition(props.home.formation, h, true, props.home.name)
         );
         const transformedAwayPlayer = props.away.startingPlayers?.map(
-            h => tranformPlayerPosition(props.home.formation, h, false)
+            h => tranformPlayerPosition(props.away.formation, h, false, props.away.name)
         );
         setHomePitchPlayers(transformedHomePlayer);
         setAwayPitchPlayers(transformedAwayPlayer);
@@ -158,8 +181,8 @@ const Picth = (props: PitchProps) => {
 
 
     return (
-        <svg
-            className={style.soccerField}
+        <FiledSvg
+            data-testid="Field"
             ref={svgRef}
             viewBox="0 0 120 90"
             xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +212,7 @@ const Picth = (props: PitchProps) => {
                     <PlayerIcon key={player.id} {...player} onDrag={onDrag} />
                 ))
             }
-        </svg>
+        </FiledSvg>
     );
 };
 
