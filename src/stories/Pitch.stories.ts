@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Pitch from "../Pitch";
-import sample from './sample_formation.json'
+import { baseProps } from '../testData'
 
 const meta = {
   title: "react-football-formation/Pitch",
@@ -18,5 +18,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Sample: Story = {
-  args: sample,
+  args: baseProps,
 };

@@ -1,4 +1,3 @@
-"use client"
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -34,7 +33,7 @@ export type PitchProps = {
     away: Team
 }
 
-export type PitchPlayer = {
+type PitchPlayer = {
     id: string
     number: number
     name: string

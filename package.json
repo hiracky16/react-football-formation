@@ -2,7 +2,8 @@
   "name": "react-football-formation",
   "version": "1.0.0",
   "description": "react foobtall formation components.",
-  "main": "index.js",
+  "main": "./dict/index.js",
+  "types": "./dict/index.d.js",
   "scripts": {
     "test": "jest",
     "storybook": "storybook dev -p 6006",
