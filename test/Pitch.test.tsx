@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Pitch, { PitchProps } from './Pitch'; // コンポーネントのパスを適切に設定してください
-import { baseProps } from './testData'
+import Pitch, { PitchProps } from '../src/Pitch'; // コンポーネントのパスを適切に設定してください
+import { baseProps } from '../src/data/testData'
 
 describe('Pitch Component', () => {
     it('renders without crashing', () => {

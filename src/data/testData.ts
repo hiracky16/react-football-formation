@@ -1,4 +1,4 @@
-import { PitchProps } from "./Pitch"
+import { PitchProps } from "../Pitch"
 
 export const baseProps: PitchProps = {
   "home": {

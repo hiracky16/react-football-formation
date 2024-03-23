@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "react foobtall formation components.",
   "main": "./dict/index.js",
-  "types": "./dict/index.d.js",
+  "types": "./dict/index.d.ts",
   "scripts": {
     "test": "jest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

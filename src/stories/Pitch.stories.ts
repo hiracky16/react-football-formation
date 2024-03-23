@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Pitch from "../Pitch";
-import { baseProps } from '../testData'
+import { baseProps } from '../data/testData'
 
 const meta = {
   title: "react-football-formation/Pitch",
